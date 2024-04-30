@@ -11,7 +11,6 @@ function App() {
     const [selectedMonth, setSelectedMonth] = useState("4月")
     const [selectedIndex, setSelectedIndex] = useState("-1")
 
-    const currentDate = new Date()
 
     function changeStyle(index, rowIndex) {
         setSelectedIndex(index + "-" + rowIndex)
