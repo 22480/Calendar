@@ -5,18 +5,6 @@
     padding: 20px;
     border-radius: 20px 20px 0 0;
 }
-/* .containerLi{
-    display: ; 
-    grid-template-columns: repeat(7,1fr);
-    grid-gap: 10px; 
-    width: 50px;
-    height: 50px;
-    font-size: 15px;
-     text-align: center;
-    vertical-align: middle; 
-    margin-top: 20px;
-    margin-left: 30px;
-} */
 .tableAll{
     border-radius: 20px 20px 0 0;
 }
@@ -24,5 +12,4 @@
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 13px;
     color: gray;
-    /* font-weight: normal; */
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import container from "../styles/container.module.css"
 
-export default function Container({ selectedMonth, currentDate ,selectedYear,generateCalendarData}) {
+export default function Container({ selectedMonth ,selectedYear,generateCalendarData}) {
     return (
         <div className={container.all}>
             <table className={container.tableAll}>

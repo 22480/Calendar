@@ -27,13 +27,10 @@ function App() {
         let currentDate = 1
         Array.from({ length: 6 }).map((_, i) => {
             calendarData[i] = []
-            // console.log(i)
             Array.from({ length: 7 }).map((_, j) => {
                 if (i === 0 && firstDayOfWeek === -1 && j < 6) {
                     const prevMonthLastDate = new Date(year, month - 1, 0).getDate()
-                    // console.log(prevMonthLastDate)
                     calendarData[i][j] =
-                        //prevMonthLastDate - firstDayOfWeek + j + 1
                         {
                             date: prevMonthLastDate - 6 + j + 1,
                             isSaturday: false,
@@ -43,10 +40,7 @@ function App() {
                         }
                 } else if (i === 0 && j < firstDayOfWeek) {
                     const prevMonthLastDate = new Date(year, month - 1, 0).getDate()
-                    // console.log(prevMonthLastDate)
-                    calendarData[i][j] =
-                        //prevMonthLastDate - firstDayOfWeek + j + 1
-                        {
+                    calendarData[i][j] ={
                             date: prevMonthLastDate - firstDayOfWeek + j + 1,
                             isSaturday: false,
                             isSunday: false,
@@ -54,10 +48,7 @@ function App() {
                             showLunarData: lunar.solarToLunar(new Date(year, month - 2, prevMonthLastDate - firstDayOfWeek + j + 1))
                         }
                 } else if (currentDate > daysInMonth) {
-                    calendarData[i][j] =
-                        //currentDate - daysInMonth
-                        //currentDate++
-                        {
+                    calendarData[i][j] ={
                             date: currentDate - daysInMonth,
                             isSaturday: false,
                             isSunday: false,
@@ -66,9 +57,7 @@ function App() {
                         }
                     currentDate++
                 } else {
-                    calendarData[i][j] =
-                        //currentDate
-                        {
+                    calendarData[i][j] ={
                             date: currentDate,
                             isSaturday: false,
                             isSunday: false,
@@ -79,14 +68,12 @@ function App() {
                 }
                 if (j === 5 && i % 2 === 0) {
                     calendarData[i][j].isSaturday = true
-                    // console.log(calendarData[i][j])
                 }
                 if (j === 6) {
                     calendarData[i][j].isSunday = true
                 }
             })
         })
-        // console.log(calendarData)
         return calendarData.map((items, rowIndex) => {
             return (
                 <tbody key={`b${rowIndex}`}>
@@ -122,8 +109,6 @@ function App() {
                 }
             })
             const nowYear = selectedYear
-            console.log(nowYear)
-            console.log(nowMonth)
             setSelectedVacation(holiday)
             setSelectedYear(nowYear + "")
             setSelectedMonth(nowMonth)
@@ -137,37 +122,29 @@ function App() {
             generateCalendarData(useYear, nowMonth)
         } else {
             const clickMonth = e.target.value
-            console.log(clickMonth)
             setSelectedMonth(clickMonth)
         }
         setSelectedIndex("-1")
     }
     function returnToday() {
         const today = new Date()
-        // console.log(today)
         const todayYear = today.getFullYear()
         const todayMonth = today.getMonth() + 1 + "月"
-        console.log(todayMonth)
         const todayDay = today.getDate()
-        console.log(todayDay)
         setSelectedYear(todayYear + "")
         setSelectedMonth(todayMonth)
         generateCalendarData(todayYear, todayMonth)
         findDay(todayYear, today.getMonth() + 1, todayDay)
     }
-    function returnHoliday() {}
     function findDay(year, month, day) {
         const inputDate = new Date(year, month, day)
         const firstDayOfMonth = new Date(+year, +month - 1, 1)
         const lastDayOfMonth = new Date(+year, +month, 0)
         const firstDayOfWeek = firstDayOfMonth.getDay() - 1
-        console.log(firstDayOfWeek)
         const dayOfMonth = inputDate.getDate()
-        console.log(dayOfMonth)
         let row = Math.floor((firstDayOfWeek + dayOfMonth) / 7)
         let col = ((firstDayOfWeek + dayOfMonth) % 7) - 1
         changeStyle(col, row)
-        console.log(col, row)
     }
 
     return (
@@ -180,7 +157,7 @@ function App() {
             </div>
             <div className={styles.content}>
                 <div className={styles.contentContainer}>
-                    <Container selectedMonth={selectedMonth} selectedYear={selectedYear} currentDate={currentDate} generateCalendarData={generateCalendarData} />
+                    <Container selectedMonth={selectedMonth} selectedYear={selectedYear}  generateCalendarData={generateCalendarData} />
                 </div>
                 <div className={styles.contentDate}></div>
             </div>
