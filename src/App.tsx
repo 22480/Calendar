@@ -17,7 +17,6 @@ function App() {
         setSelectedIndex(index + "-" + rowIndex)
     }
     function generateCalendarData(year, month_) {
-        console.log(year, month_)
         const month = month_.replace("月", "")
         const calendarData = []
         const firstDayOfMonth = new Date(+year, +month - 1, 1)
@@ -84,7 +83,7 @@ function App() {
                             const holiday = item.isHoliday ? "holiday" : ""
                             const className = `${styles.containerLi} ${styles[`${sunday}`]} ${styles[`${saturday}`]} ${styles[`${holiday}`]}`
                             return (
-                                <th key={`c${index}`} className={className} onClick={() => changeStyle(index, rowIndex)} style={selectedIndex === index + "-" + rowIndex ? { backgroundColor: "rgb(103, 171, 226)", color: "white" } : {}}>
+                                <th key={`c${index}`} className={className} onClick={() => changeStyle(index, rowIndex)} style={selectedIndex === index + "-" + rowIndex ? { backgroundColor: "rgb(103, 171, 226)", color: "white" ,borderRadius: "5px"} : {}}>
                                     {item.date}
                                     <div className={styles.lunarDay}>{item.showLunarData.day}</div>
                                 </th>
