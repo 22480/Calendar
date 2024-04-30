@@ -138,11 +138,17 @@ function App() {
     function findDay(year, month, day) {
         const inputDate = new Date(year, month, day)
         const firstDayOfMonth = new Date(+year, +month - 1, 1)
+        let row,col
         const lastDayOfMonth = new Date(+year, +month, 0)
         const firstDayOfWeek = firstDayOfMonth.getDay() - 1
         const dayOfMonth = inputDate.getDate()
-        let row = Math.floor((firstDayOfWeek + dayOfMonth) / 7)
-        let col = ((firstDayOfWeek + dayOfMonth) % 7) - 1
+        if(firstDayOfWeek === -1){
+            row = Math.floor((firstDayOfWeek + dayOfMonth+6) / 7)
+            col = ((firstDayOfWeek + dayOfMonth) % 7) - 1
+        }else{ 
+            row = Math.floor((firstDayOfWeek + dayOfMonth) / 7)
+            col = ((firstDayOfWeek + dayOfMonth) % 7) - 1
+        }
         changeStyle(col, row)
     }
 
