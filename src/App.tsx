@@ -96,6 +96,7 @@ function App() {
         })
     }
     function handleSelected(e: React.ChangeEvent<HTMLSelectElement>) {
+        setSelectedIndex('-1')
         const selectName = e.target.name
         const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value)
         if (selectName === "vacation") {
@@ -139,7 +140,6 @@ function App() {
         const inputDate = new Date(year, month, day)
         const firstDayOfMonth = new Date(+year, +month - 1, 1)
         let row,col
-        const lastDayOfMonth = new Date(+year, +month, 0)
         const firstDayOfWeek = firstDayOfMonth.getDay() - 1
         const dayOfMonth = inputDate.getDate()
         if(firstDayOfWeek === -1){
