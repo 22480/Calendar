@@ -114,7 +114,7 @@ function App() {
             setSelectedMonth(nowMonth)
             generateCalendarData(nowYear, nowMonth)
             const month = nowMonth.replace("月", "")
-            findDay(+nowYear, +month, nowDay)
+            findDay(+nowYear, +month, +nowDay)
         } else if (selectName === "year") {
             const useYear = selectedOptions[0].toString()
             setSelectedYear(useYear)
