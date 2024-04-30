@@ -124,7 +124,6 @@ function App() {
             const clickMonth = e.target.value
             setSelectedMonth(clickMonth)
         }
-        setSelectedIndex("-1")
     }
     function returnToday() {
         const today = new Date()
