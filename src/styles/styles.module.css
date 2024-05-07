@@ -63,6 +63,9 @@ button:hover{
     border-radius: 5px;
     color: rgb(165, 12, 12);
 }
+.grey{
+    color: #ccc;
+}
 .lunarDay{
     font-size: 15px;
     margin-top: 5px;

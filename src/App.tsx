@@ -34,6 +34,7 @@ function App() {
                             isSaturday: false,
                             isSunday: false,
                             isHoliday: false,
+                            isGrey:true,
                             showLunarData: lunar.solarToLunar(new Date(year, month - 2, prevMonthLastDate - 6 + j + 1))
                         }
                 } else if (i === 0 && j < firstDayOfWeek) {
@@ -43,6 +44,7 @@ function App() {
                             isSaturday: false,
                             isSunday: false,
                             isHoliday: false,
+                            isGrey:true,
                             showLunarData: lunar.solarToLunar(new Date(year, month - 2, prevMonthLastDate - firstDayOfWeek + j + 1))
                         }
                 } else if (currentDate > daysInMonth) {
@@ -51,6 +53,7 @@ function App() {
                             isSaturday: false,
                             isSunday: false,
                             isHoliday: false,
+                            isGrey:true,
                             showLunarData: lunar.solarToLunar(new Date(year, month, currentDate - daysInMonth))
                         }
                     currentDate++
@@ -60,6 +63,7 @@ function App() {
                             isSaturday: false,
                             isSunday: false,
                             isHoliday: false,
+                            isGrey:false,
                             showLunarData: lunar.solarToLunar(new Date(`${year}-${month}-${currentDate}`))
                         }
                     currentDate++
@@ -80,7 +84,8 @@ function App() {
                             const sunday = item.isSunday ? "sunday" : ""
                             const saturday = item.isSaturday ? "saturday" : ""
                             const holiday = item.isHoliday ? "holiday" : ""
-                            const className = `${styles.containerLi} ${styles[`${sunday}`]} ${styles[`${saturday}`]} ${styles[`${holiday}`]}`
+                            const grey = item.isGrey ? "grey":""
+                            const className = `${styles.containerLi} ${styles[`${sunday}`]} ${styles[`${saturday}`]} ${styles[`${holiday}`]} ${styles[`${grey}`]}`
                             return (
                                 <th key={`c${index}`} className={className} onClick={() => changeStyle(index, rowIndex)} style={selectedIndex === index + "-" + rowIndex ? { backgroundColor: "rgb(103, 171, 226)", color: "white" ,borderRadius: "5px"} : {}}>
                                     {item.date}
@@ -98,6 +103,7 @@ function App() {
         const selectName = e.target.name
         const selectedOptions = Array.from(e.target.selectedOptions).map(option => option.value)
         if (selectName === "vacation") {
+            setSelectedVacation("")
             const holiday = selectedOptions[0]
             let nowMonth
             let nowDay 
