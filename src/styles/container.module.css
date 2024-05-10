@@ -1,14 +1,14 @@
-*{
+* {
     box-sizing: border-box;
 }
-.all{
+.all {
     padding: 20px;
     border-radius: 20px 20px 0 0;
 }
-.tableAll{
+.tableAll {
     border-radius: 20px 20px 0 0;
 }
-.container{
+.container {
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 13px;
     color: gray;

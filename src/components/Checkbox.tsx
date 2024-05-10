@@ -1,13 +1,37 @@
 import React, { FC } from "react"
 import box from "../styles/box.module.css"
-import CheckItem from "./CheckItem"
+import { MonthList, VacationList, YearList } from "./ContainerData"
+import CheckOptions from "./CheckOptions"
 
+interface CheckboxProps {
+    list: Array<VacationList> | Array<YearList> | Array<MonthList>
+    value: number | string
+    handleSelected: (value: React.ChangeEvent<HTMLSelectElement>) => void
+}
+export default function Checkbox(props: CheckboxProps) {
+    let { list, value, handleSelected } = props
+    let arr
+    console.log(value)
+    switch (list[0].type) {
+        case "vacation":
+            arr = list.filter(item => item.value === value)
+            value = arr[0].name
+            break
+        case "year":
+            arr = list.filter(item => item.value === value)
+            value = arr[0].name
+            break
+        case "month":
+            arr = list.filter(item => item.value === value)
+            value = arr[0].name
+            break
+        default:
+            console.log("出错")
+    }
 
-export default function Checkbox({ list,value, handleSelected}) {
-  
     return (
         <select name={list[0].type} value={value} className={box.dropdown} onChange={handleSelected}>
-            <CheckItem list={list} />
+            <CheckOptions list={list} />
         </select>
     )
 }
